@@ -16,3 +16,7 @@
 !/log/.keep
 /tmp
 vendor/ruby
+
+
+# Ignore Spring files.
+/spring/*.pid

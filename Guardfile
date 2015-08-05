@@ -51,7 +51,7 @@
 # end
 # end
 
-guard :rspec, cmd: 'bundle exec rspec' do
+guard :rspec, cmd: 'spring rspec' do
   watch('spec/spec_helper.rb')                        { "spec" }
   watch('config/routes.rb')                           { "spec/routing" }
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
