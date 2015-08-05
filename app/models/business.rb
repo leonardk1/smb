@@ -1,4 +1,4 @@
 class Business < ActiveRecord::Base
-	validates  :name,     presence: true
-	validates  :location, presence: true
+  validates  :name,     presence: true
+  validates  :location, presence: true
 end
