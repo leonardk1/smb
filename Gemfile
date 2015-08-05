@@ -47,11 +47,11 @@ group :development, :test do
   gem 'spring-commands-rspec'
 end
 
-group :test do	
-	gem 'minitest-reporters'
-	gem 'factory_girl_rails'
-	gem 'rspec-rails'
-	gem 'rspec'
+group :test do  
+  gem 'minitest-reporters'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'rspec'
 end
 
 group :production do
