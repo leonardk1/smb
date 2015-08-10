@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Invoice, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @invoice = create(:invoice)
+  end
+
+  subject { @invoice }
+  it { should be_valid }
+  check_for_attributes(["order_id"])
 end
