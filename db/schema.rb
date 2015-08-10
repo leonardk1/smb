@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810112442) do
+ActiveRecord::Schema.define(version: 20150810153044) do
 
   create_table "businesses", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -42,8 +42,9 @@ ActiveRecord::Schema.define(version: 20150810112442) do
   add_index "order_products", ["order_id", "product_id", "quantity"], name: "index_order_products_on_order_id_and_product_id_and_quantity", unique: true
 
   create_table "orders", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "business_id"
   end
 
   create_table "products", force: :cascade do |t|
