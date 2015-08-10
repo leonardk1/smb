@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150807071947) do
+ActiveRecord::Schema.define(version: 20150810112442) do
 
   create_table "businesses", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -23,6 +23,27 @@ ActiveRecord::Schema.define(version: 20150807071947) do
     t.string   "fax"
     t.string   "vrn"
     t.string   "tin"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.integer  "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.integer  "order_id",   null: false
+    t.integer  "product_id", null: false
+    t.integer  "quantity",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "order_products", ["order_id", "product_id", "quantity"], name: "index_order_products_on_order_id_and_product_id_and_quantity", unique: true
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
