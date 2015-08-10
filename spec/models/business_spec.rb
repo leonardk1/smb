@@ -30,4 +30,15 @@ describe Business do
       expect(@invalid_business.errors.full_messages).to include("Location can't be blank")
     end
   end
+
+  describe "association to product" do
+    before do
+      @product = create(:product, name: "Fridge", business_id: @business.id)
+      @second_product = create(:product, name: "Printer", business_id: @business.id)
+    end
+
+    it "has many products" do
+      expect(@business.products.count).to be > 1
+    end
+  end
 end
