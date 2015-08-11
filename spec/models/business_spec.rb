@@ -55,13 +55,15 @@ describe Business do
 
     specify "can add a service provider" do
       @business3.add_service_provider(@business4)
-      expect(@business3.active_relationships.where(customer_id: @business3.id, service_provider_id: @business4.id).empty?).to eq(false)
+      expect(@business3.active_relationships.where(customer_id: @business3.id,
+        service_provider_id: @business4.id).empty?).to eq(false)
     end
 
     specify "can remove a service provider" do
       @business3.add_service_provider(@business4)
       @business3.remove_service_provider(@business4)
-      expect(@business3.active_relationships.where(customer_id: @business3.id, service_provider_id: @business4.id).empty?).to eq(true)
+      expect(@business3.active_relationships.where(customer_id: @business3.id,
+        service_provider_id: @business4.id).empty?).to eq(true)
     end
   end
 
