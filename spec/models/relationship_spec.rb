@@ -4,7 +4,8 @@ RSpec.describe Relationship, :type => :model do
   before do
     @business1 = create(:business, name: "Top Enterprises")
     @business2 = create(:business, name: "Fast Food")
-    @relationship = Relationship.new(customer_id: @business1.id, service_provider_id: @business2.id)
+    @relationship = Relationship.new(customer_id: @business1.id,
+      service_provider_id: @business2.id)
   end
 
   specify "validity" do
