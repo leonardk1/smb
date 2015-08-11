@@ -7,7 +7,7 @@ def has_attribute(attribute)
   it { should respond_to(attribute.to_sym) }
 end
 
-def check_for_attributes(attributes)
+def attributes_present_or_not?(attributes)
   #testing validity
   attributes.each { |attribute|
     #ensures that all the the required attributes are present

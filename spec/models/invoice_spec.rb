@@ -7,5 +7,5 @@ RSpec.describe Invoice, :type => :model do
 
   subject { @invoice }
   it { should be_valid }
-  check_for_attributes(["order_id"])
+  attributes_present_or_not?(["order_id"])
 end

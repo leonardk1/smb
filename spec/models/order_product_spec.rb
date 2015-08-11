@@ -11,7 +11,7 @@ RSpec.describe OrderProduct, :type => :model do
 
   it { should be_valid }
 
-  check_for_attributes(@attribute_array)
+  attributes_present_or_not?(@attribute_array)
 
   describe "invalid order_product" do
     before do

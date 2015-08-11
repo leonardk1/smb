@@ -7,7 +7,7 @@ RSpec.describe Order, :type => :model do
 
   subject { @order }
   it { should be_valid }
-  check_for_attributes(["business_id"])
+  attributes_present_or_not?(["business_id"])
 
   describe "products" do
     before do
