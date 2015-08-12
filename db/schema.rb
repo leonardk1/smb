@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812111306) do
+ActiveRecord::Schema.define(version: 20150812121049) do
 
   create_table "bank_accounts", force: :cascade do |t|
     t.string   "name"
@@ -38,12 +38,25 @@ ActiveRecord::Schema.define(version: 20150812111306) do
   create_table "contacts", force: :cascade do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "email"
     t.string   "mobile"
-    t.string   "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.integer  "role_id"
   end
+
+  add_index "contacts", ["email"], name: "index_contacts_on_email", unique: true
+  add_index "contacts", ["reset_password_token"], name: "index_contacts_on_reset_password_token", unique: true
+  add_index "contacts", ["role_id"], name: "index_contacts_on_role_id"
 
   create_table "mobile_money_accounts", force: :cascade do |t|
     t.string   "number"
@@ -72,5 +85,11 @@ ActiveRecord::Schema.define(version: 20150812111306) do
   add_index "relationships", ["customer_id", "service_provider_id"], name: "index_relationships_on_customer_id_and_service_provider_id", unique: true
   add_index "relationships", ["customer_id"], name: "index_relationships_on_customer_id"
   add_index "relationships", ["service_provider_id"], name: "index_relationships_on_service_provider_id"
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
