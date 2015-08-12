@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150807071947) do
+ActiveRecord::Schema.define(version: 20150812111306) do
+
+  create_table "bank_accounts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "number"
+    t.string   "kind"
+    t.string   "location"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "business_id"
+  end
 
   create_table "businesses", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -25,6 +35,24 @@ ActiveRecord::Schema.define(version: 20150807071947) do
     t.string   "tin"
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "email"
+    t.string   "mobile"
+    t.string   "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mobile_money_accounts", force: :cascade do |t|
+    t.string   "number"
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "business_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -33,5 +61,16 @@ ActiveRecord::Schema.define(version: 20150807071947) do
     t.text     "description"
     t.integer  "business_id"
   end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.integer  "service_provider_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "relationships", ["customer_id", "service_provider_id"], name: "index_relationships_on_customer_id_and_service_provider_id", unique: true
+  add_index "relationships", ["customer_id"], name: "index_relationships_on_customer_id"
+  add_index "relationships", ["service_provider_id"], name: "index_relationships_on_service_provider_id"
 
 end
