@@ -8,6 +8,16 @@ RSpec.describe Contact, :type => :model do
   subject { @contact }
   it { should be_valid }
   attributes_present_or_not?(["firstname", "lastname", "email", "role_id"])
+  it { should respond_to(:encrypted_password) }
+  it { should respond_to(:reset_password_token) }
+  it { should respond_to(:reset_password_sent_at) }
+  it { should respond_to(:remember_created_at) }
+  it { should respond_to(:current_sign_in_at) }
+  it { should respond_to(:current_sign_in_ip) }
+  it { should respond_to(:last_sign_in_ip) }
+  it { should respond_to(:confirmation_token) }
+  it { should respond_to(:confirmed_at) }
+  it { should respond_to(:confirmation_sent_at) }
 
   describe "invalid Contact" do
     before do
