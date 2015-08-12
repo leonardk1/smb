@@ -45,72 +45,72 @@ describe Business do
   describe "adding and removing service providers" do
     before do
       Business.delete_all
-      @business3 = create(:business, name: "Food Supplies")
-      @business4 = create(:business, name: "Electronics Gen Ent")
+      @food_business = create(:food_business)
+      @electronics_business = create(:electronics_business)
     end
 
     specify "is initially not a customer to any business" do
-      expect(@business3.is_a_customer?("Electronics Gen Ent")).to eq(false)
+      expect(@food_business.is_a_customer?(@electronics_business)).to eq(false)
     end
 
     specify "can add a service provider" do
-      @business3.add_service_provider(@business4)
-      expect(@business3.active_relationships.where(customer_id: @business3.id,
-        service_provider_id: @business4.id).empty?).to eq(false)
+      @food_business.add_service_provider(@electronics_business)
+      expect(@food_business.active_relationships.where(customer_id: @food_business.id,
+        service_provider_id: @electronics_business.id).empty?).to eq(false)
     end
 
     specify "can remove a service provider" do
-      @business3.add_service_provider(@business4)
-      @business3.remove_service_provider(@business4)
-      expect(@business3.active_relationships.where(customer_id: @business3.id,
-        service_provider_id: @business4.id).empty?).to eq(true)
+      @food_business.add_service_provider(@electronics_business)
+      @food_business.remove_service_provider(@electronics_business)
+      expect(@food_business.active_relationships.where(customer_id: @food_business.id,
+        service_provider_id: @electronics_business.id).empty?).to eq(true)
     end
   end
 
   describe "customers and service providers" do
     before do
       Business.delete_all
-      @business5 = create(:business, name: "Food Supplies")
-      @business6 = create(:business, name: "Electronics Gen Ent")
-      @business7 = create(:business, name: "Paper Binding Ltd")
-      @business8 = create(:business, name: "Shell Ltd")
+      @food_business = create(:food_business)
+      @electronics_business = create(:electronics_business)
+      @fuel_business = create(:fuel_business)
+      @paper_business = create(:paper_business)
     end
 
     specify "can have one or more service providers" do
-      @business5.add_service_provider(@business6)
-      @business5.add_service_provider(@business7)
-      expect(@business5.service_providers.count).to be > 1
+      @food_business.add_service_provider(@electronics_business)
+      @food_business.add_service_provider(@fuel_business)
+      expect(@food_business.service_providers.count).to be > 1
     end
 
     specify "can have one or more customers" do
-      @business5.add_service_provider(@business8)
-      @business6.add_service_provider(@business8)
-      expect(@business8.customers.count).to be > 1
+      @food_business.add_service_provider(@paper_business)
+      @electronics_business.add_service_provider(@paper_business)
+      expect(@paper_business.customers.count).to be > 1
     end
 
     context "Service provider and Customer at the same time" do
       before do
-        @business8.add_service_provider(@business7)
-        @business7.add_service_provider(@business6)
+        @paper_business.add_service_provider(@fuel_business)
+        @fuel_business.add_service_provider(@electronics_business)
       end
       specify "being a customer" do
-        expect(@business7.customers.include?(@business8)).to eq(true)
+        expect(@fuel_business.customers.include?(@paper_business)).to eq(true)
       end
 
       specify "being a service provider" do
-        expect(@business7.service_providers.include?(@business6)).to eq(true)
+        expect(@fuel_business.service_providers.include?(@electronics_business)).to eq(true)
       end
     end
 
     context "two business can be both service providers and customers to each other" do
       before do
-        @business8.add_service_provider(@business7)
-        @business7.add_service_provider(@business8)
+        @paper_business.add_service_provider(@fuel_business)
+        @fuel_business.add_service_provider(@paper_business)
       end
 
       specify "mutual customer-service provider relationship" do
-        expect(@business8.is_a_customer?(@business7)).to eq(true)
-        expect(@business7.is_a_customer?(@business8)).to eq(true)
+        expect(@paper_business.is_a_customer?(@fuel_business)).to eq(true)
+        expect(@fuel_business.is_a_customer?(@paper_business)).to eq(true)
       end
     end
   end
