@@ -114,4 +114,26 @@ describe Business do
       end
     end
   end
+
+  describe "association to bank account" do
+    before do
+      @bank_account = create(:bank_account, number: "09J2090988988", business_id: @business.id)
+      @bank_account2 = create(:bank_account, business_id: @business.id)
+    end
+
+    it "has many bank accounts" do
+      expect(@business.bank_accounts.count).to be > 1
+    end
+  end
+
+  describe "association to mobile money accounts" do
+    before do
+      @mobile_money_account = create(:mobile_money_account, number: "+254756909098", business_id: @business.id)
+      @mobile_moeny_account2 = create(:mobile_money_account, business_id: @business.id)
+    end
+
+    it "has many mobile money accounts" do
+      expect(@business.mobile_money_accounts.count).to be > 1
+    end
+  end
 end

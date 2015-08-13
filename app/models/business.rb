@@ -6,10 +6,10 @@ class Business < ActiveRecord::Base
   has_many :passive_relationships, class_name:  "Relationship",
                                    foreign_key: "service_provider_id",
                                    dependent:   :destroy
-
   has_many :service_providers, through: :active_relationships, source: :service_provider
   has_many :customers, through: :passive_relationships, source: :customer
-
+  has_many :bank_accounts
+  has_many :mobile_money_accounts
   validates  :name,     presence: true
   validates  :location, presence: true
 
