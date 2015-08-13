@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150812134052) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bank_accounts", force: :cascade do |t|
     t.string   "name"
     t.string   "number"
@@ -57,13 +60,35 @@ ActiveRecord::Schema.define(version: 20150812134052) do
     t.integer  "role_id"
   end
 
-  add_index "contacts", ["email"], name: "index_contacts_on_email", unique: true
-  add_index "contacts", ["reset_password_token"], name: "index_contacts_on_reset_password_token", unique: true
-  add_index "contacts", ["role_id"], name: "index_contacts_on_role_id"
+  add_index "contacts", ["email"], name: "index_contacts_on_email", unique: true, using: :btree
+  add_index "contacts", ["reset_password_token"], name: "index_contacts_on_reset_password_token", unique: true, using: :btree
+  add_index "contacts", ["role_id"], name: "index_contacts_on_role_id", using: :btree
+
+  create_table "invoices", force: :cascade do |t|
+    t.integer  "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "mobile_money_accounts", force: :cascade do |t|
     t.string   "number"
     t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "business_id"
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.integer  "order_id",   null: false
+    t.integer  "product_id", null: false
+    t.integer  "quantity",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "order_products", ["order_id", "product_id", "quantity"], name: "index_order_products_on_order_id_and_product_id_and_quantity", unique: true, using: :btree
+
+  create_table "orders", force: :cascade do |t|
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "business_id"
@@ -84,4 +109,5 @@ ActiveRecord::Schema.define(version: 20150812134052) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "contacts", "roles"
 end
