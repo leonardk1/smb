@@ -20,4 +20,4 @@ def attributes_present_or_not?(attributes)
      requires_attribute(attribute)
     end
   }
-end 
+end
