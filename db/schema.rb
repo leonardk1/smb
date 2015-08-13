@@ -13,6 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20150812134052) do
 
+  create_table "bank_accounts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "number"
+    t.string   "kind"
+    t.string   "location"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "business_id"
+  end
+
   create_table "businesses", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -50,6 +60,14 @@ ActiveRecord::Schema.define(version: 20150812134052) do
   add_index "contacts", ["email"], name: "index_contacts_on_email", unique: true
   add_index "contacts", ["reset_password_token"], name: "index_contacts_on_reset_password_token", unique: true
   add_index "contacts", ["role_id"], name: "index_contacts_on_role_id"
+
+  create_table "mobile_money_accounts", force: :cascade do |t|
+    t.string   "number"
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "business_id"
+  end
 
   create_table "products", force: :cascade do |t|
     t.datetime "created_at",  null: false
