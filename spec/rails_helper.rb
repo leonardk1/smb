@@ -3,6 +3,8 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'capybara/rspec'
+require 'capybara/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
@@ -31,6 +33,7 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 RSpec.configure do |config|
   # Include Factory Girl syntax to simplify calls to factories
   config.include FactoryGirl::Syntax::Methods
+  config.include Capybara::DSL
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

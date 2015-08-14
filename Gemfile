@@ -49,7 +49,8 @@ group :development, :test do
   gem 'spring-commands-rspec'
 end
 
-group :test do  
+group :test do
+  gem 'capybara'
   gem 'minitest-reporters'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
