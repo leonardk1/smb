@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20150812134052) do
 
   # These are extensions that must be enabled in order to support this database
@@ -102,6 +103,17 @@ ActiveRecord::Schema.define(version: 20150812134052) do
     t.text     "description"
     t.integer  "business_id"
   end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.integer  "service_provider_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "relationships", ["customer_id", "service_provider_id"], name: "index_relationships_on_customer_id_and_service_provider_id", unique: true
+  add_index "relationships", ["customer_id"], name: "index_relationships_on_customer_id"
+  add_index "relationships", ["service_provider_id"], name: "index_relationships_on_service_provider_id"
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
