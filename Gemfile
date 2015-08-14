@@ -50,7 +50,8 @@ group :development, :test do
   gem 'rails-erd'
 end
 
-group :test do  
+group :test do
+  gem 'capybara'
   gem 'minitest-reporters'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
