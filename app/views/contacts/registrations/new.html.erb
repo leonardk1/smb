@@ -1,0 +1,72 @@
+<div class="panel panel-primary authentication-panel">
+  <div class="panel-heading">    
+    <div class="panel-title text-center"><h2>Sign up</h2></div>
+  </div>
+  <div class="panel-body">   
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form-horizontal", role: "form") do |f| %>
+      <%= devise_error_messages! %>        
+      <div class="form-group">
+        <%= f.label :email, "Email:", class: "col-sm-2 control-label"%>
+        <div class="col-sm-10">
+          <div class="input-group">
+            <span class="input-group-addon" id="email-addon"><i class="fa fa-envelope"></i></span>
+            <%= f.email_field :email, class: "form-control", placeholder: "e.g johnsmith@example.com",
+              autofocus: true, "aria-describedby" => "email-addon" %>            
+          </div>          
+      </div>
+      <div class="form-group">
+        <%= f.label :firstname, "FirstName:",class: "col-sm-2 control-label"%>
+        <div class="col-sm-10">
+          <div class="input-group">
+            <span class="input-group-addon" id="firstname_addon"><i class="fa fa-user"></i></span>
+            <%= f.text_field :firstname, class: "form-control", placeholder: "firstname",
+              autofocus: true, "aria-describedby" => "firstname_addon" %>            
+          </div>          
+      </div>
+      <div class="form-group">
+        <%= f.label :lastname, "LastName", class: "col-sm-2 control-label"%>
+        <div class="col-sm-10">
+          <div class="input-group">
+            <span class="input-group-addon" id="lastname_addon"><i class="fa fa-user"></i></span>
+            <%= f.text_field :lastname, class: "form-control", placeholder: "lastname",
+              autofocus: true, "aria-describedby" => "lastname_addon" %>            
+           </div>          
+      </div>
+      <div class="form-group">
+        <%= f.label :role_id, "Role:", class: "col-sm-2 control-label"%>
+        <div class="col-sm-10">
+          <div class="input-group">
+            <span class="input-group-addon" id="role_addon"><i class="fa fa-bars"></i></span>
+            <%= f.text_field :role_id, class: "form-control",
+              autofocus: true, "aria-describedby" => "role_addon" %>            
+           </div>          
+      </div>
+      <div class="form-group">
+        <%= f.label :password, "Password:", class: "col-sm-2 control-label"%>
+        <div class="col-sm-10">
+          <div class="input-group">
+            <span class="input-group-addon" id="password_addon"><i class="fa fa-lock"></i></span>
+            <%= f.password_field :password, class: "form-control",
+              autofocus: true, "aria-describedby" => "password_addon" %>            
+           </div>          
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Password Confirmation:", class: "col-sm-2 control-label"%>
+        <div class="col-sm-10">
+          <div class="input-group">
+            <span class="input-group-addon" id="password_confirmation_addon"><i class="fa fa-lock"></i></span>
+            <%= f.password_field :password_confirmation, class: "form-control",
+              autofocus: true, "aria-describedby" => "password_confirmation_addon" %>            
+           </div>          
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit "Sign up", class: "btn btn-success"%> <small>OR</small>
+        <%= render "contacts/shared/links" %>
+        </div>
+      </div>
+    <% end %>   
+  </div>
+</div>
+
+
