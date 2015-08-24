@@ -123,3 +123,51 @@ ul.alert-dropdown {
     filter: alpha(opacity=86); /* For IE8 and earlier */ 
   }
 }
+
+.authentication-panel{
+  margin-top: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
+  border-color: #0099FF !important;
+  .panel-heading{
+    background: #0099FF !important;
+  }
+
+  .input-group{
+    margin-bottom: 25px;
+  }  
+}
+
+.login_btn{
+  padding-top: 5px;
+}
+
+/* devise alerts */
+/*flash*/
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
