@@ -2,6 +2,34 @@ require 'rails_helper'
 
 describe 'Authentication and Registration' do
   subject { page }
+
+  describe "Sign up page" do
+    before do
+      visit new_contact_registration_path
+    end
+
+    it { should have_content('Sign up')}
+    it { should have_content('Email:')}
+    it { should have_content('FirstName:')}
+    it { should have_content('LastName:')}
+    it { should have_content('Role:')}
+    it { should have_content('Password:')}
+    it { should have_content('Password Confirmation:')}
+    it { should have_link('Log in')}
+  end
+
+  describe "Log in page" do
+    before do
+      visit new_contact_session_path
+    end
+
+    it { should have_content('Log in')}
+    it { should have_content('Email:')}
+    it { should have_content('Password:')}
+    it { should have_link('Forgot your password?')}
+    it { should have_link('Sign up')}
+  end
+
   describe 'Registration' do
     context 'Successful Registration' do
       before do
