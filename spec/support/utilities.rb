@@ -21,3 +21,11 @@ def attributes_present_or_not?(attributes)
     end
   }
 end
+
+def login
+  @contact = create(:contact)
+  visit new_contact_session_path
+  fill_in "contact[email]",    with: @contact.email.upcase
+  fill_in "contact[password]", with: @contact.password
+  click_button "Log in"
+end

@@ -1,4 +1,5 @@
 class Contact < ActiveRecord::Base
+  belongs_to :business
   belongs_to :role
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable

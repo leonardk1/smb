@@ -1,4 +1,5 @@
 class Business < ActiveRecord::Base
+  has_many :contacts
   has_many :products
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "customer_id",

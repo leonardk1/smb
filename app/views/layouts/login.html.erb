@@ -16,10 +16,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div id="wrapper">
-      <%= render 'layouts/navigation' %>
-      <%= render 'layouts/messages' %>
-      <%= yield %>
-    </div>
+    <div class="container">
+      <div class="row">
+        <%= render 'layouts/login_navigation' %>          
+      </div>
+      <div class="row">
+        <%= render 'layouts/messages' %>      
+        <%= yield %>
+      </div>                
+    </div>      
   </body>
 </html>
