@@ -123,3 +123,21 @@ ul.alert-dropdown {
     filter: alpha(opacity=86); /* For IE8 and earlier */ 
   }
 }
+
+.authentication-panel{
+  margin-top: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
+  border-color: #0099FF !important;
+  .panel-heading{
+    background: #0099FF !important;
+  }
+
+  .input-group{
+    margin-bottom: 25px;
+  }  
+}
+
+.login_btn{
+  padding-top: 5px;
+}
