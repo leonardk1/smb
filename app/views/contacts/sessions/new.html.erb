@@ -3,7 +3,8 @@
     <div class="panel-title text-center"><h2>Log in</h2></div>
   </div>
   <div class="panel-body">   
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-horizontal", role: "form") do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name),
+      class: "form-horizontal", role: "form") do |f| %>
       <%= devise_error_messages! %>        
       <div class="form-group">
         <%= f.label :email, "Email:", class: "col-sm-2 control-label"%>
@@ -36,8 +37,8 @@
       <% end -%>      
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-        <%= f.submit "Log in", class: "btn btn-primary" %>
-        <%= render "contacts/shared/links" %>
+          <%= f.submit "Log in", class: "btn btn-primary" %>
+          <%= render "contacts/shared/links" %>
         </div>
       </div>
     <% end %>   
