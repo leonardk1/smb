@@ -136,4 +136,16 @@ describe Business do
       expect(@business.mobile_money_accounts.count).to be > 1
     end
   end
+
+  describe "association to contacts" do
+    before do
+      @role = create(:role, name: "Accountant" )
+      @contact_1 = create(:contact, business_id: @business.id, role_id: @role.id )
+      @contact_2 = create(:contact, business_id: @business.id)
+    end
+
+    it "has many contacts" do
+      expect(@business.contacts.count).to be > 1
+    end
+  end
 end
