@@ -67,4 +67,15 @@ RSpec.describe Contact, :type => :model do
       expect(@non_unique_contact).to_not be_valid
     end
   end
+
+  describe "association to Business" do
+    before do
+      @business = create(:business)
+      @contact.update(business_id: @business.id)
+    end
+
+    specify "belongs to business" do
+      expect(@contact.business).to eq(@business)
+    end
+  end
 end
