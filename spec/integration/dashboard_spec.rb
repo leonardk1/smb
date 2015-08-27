@@ -3,6 +3,7 @@ require "rails_helper"
 describe "The DashBoard Page" do
   subject { page }
   before do
+    login
     visit root_path
   end
   it { should have_content('Dashboard')}
