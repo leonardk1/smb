@@ -17,7 +17,19 @@ describe 'Authentication and Registration' do
     it { should have_content('Password Confirmation:')}
     it { should have_link('Log in')}
   end
-  
+
+  describe "Log in page" do
+    before do
+      visit new_contact_session_path
+    end
+
+    it { should have_content('Log in')}
+    it { should have_content('Email:')}
+    it { should have_content('Password:')}
+    it { should have_link('Forgot your password?')}
+    it { should have_link('Sign up')}
+  end
+
   describe 'Registration' do
     context 'Successful Registration' do
       before do
