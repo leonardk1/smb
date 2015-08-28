@@ -15,7 +15,7 @@ class BusinessController < ApplicationController
       else
         flash[:error] = "Sorry, Unable to Register the Business
           because #{@business.errors.full_messages.to_sentence}"
-          format.html { render action: "new" }
+        format.html { render action: "new" }
       end
     end
   end
