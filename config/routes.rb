@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     registrations: "contacts/registrations"
   }
   resources :dashboard
+  resources :business
   root 'dashboard#index'
 end
