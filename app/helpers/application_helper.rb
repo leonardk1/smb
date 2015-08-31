@@ -9,10 +9,10 @@ module ApplicationHelper
   end
 
   def attribute_present_or_not?(attribute)
-  	if attribute.present?
-  		return "#{attribute}" 
-  	else
-  		return " - "
-  	end
+    if attribute.present?
+      return "#{attribute}"
+    else
+      return " - "
+    end
   end
 end
