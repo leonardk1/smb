@@ -18,4 +18,18 @@ describe ApplicationHelper do
       expect(flash_class("alert")).to eq("alert alert-dismissable alert-warning")
     end
   end
+
+  describe "attribute_present_or_not?" do
+    before do
+      @business = create(:business, tin: nil)
+      @name = @business.name
+    end
+    it "returns the attribute if present" do
+      expect(attribute_present_or_not?(@business.name)).to eq("#{@name}")
+    end
+
+    it "return - if the attribute is not present" do
+      expect(attribute_present_or_not?(@business.tin)).to eq(" - ")
+    end
+  end
 end

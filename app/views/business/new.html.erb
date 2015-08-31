@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="panel panel-primary general-panel">
+      <div class="panel-heading">    
+        <div class="panel-title text-center">
+          <h4>Register a new Business</h4>
+        </div>
+      </div>
+      <div class="panel-body">
+        <%= form_for @business, url: {action: "create"}, html: {class: "form-horizontal",
+          role: "form"} do |f|%>
+          <div class="form-group">
+            <%= label_tag(:name, "Business Name:", class: "control-label col-sm-4") %>
+            <div class="col-sm-6">
+              <%= f.text_field(:name, class: "form-control") %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= label_tag(:location, "Location:", class: "control-label col-sm-4") %>
+            <div class="col-sm-6">
+              <%= f.text_field(:location, class: "form-control") %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= label_tag(:address, "Address:", class: "control-label col-sm-4") %>
+            <div class="col-sm-6">
+              <%= f.text_field(:address, class: "form-control") %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= label_tag(:voice, "Voice:", class: "control-label col-sm-4") %>
+            <div class="col-sm-6">
+              <%= f.text_field(:voice, class: "form-control") %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= label_tag(:fax, "Fax:", class: "control-label col-sm-4") %>
+            <div class="col-sm-6">
+              <%= f.text_field(:fax, class: "form-control") %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= label_tag(:vrn, "VRN:", class: "control-label col-sm-4") %>
+            <div class="col-sm-6">
+              <%= f.text_field(:vrn, class: "form-control") %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= label_tag(:tin, "TIN:", class: "control-label col-sm-4") %>
+            <div class="col-sm-6">
+              <%= f.text_field(:tin, class: "form-control") %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-4">
+            <%= submit_tag("Add Business", class: "btn btn-sm btn-primary") %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>      
+  </div>    
+</div>

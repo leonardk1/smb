@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <h1 class="page-header text-center">Details for <%= @business.name %></h1>
+    <div class="panel panel-primary general-panel">
+      <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <tr>
+            <th>Name:</th>
+            <td><%= attribute_present_or_not?(@business.name) %></td>
+          </tr>
+          <tr>
+            <th>Location:</th>
+            <td><%= attribute_present_or_not?(@business.location) %></td>
+          </tr>
+         <tr>
+            <th>Address:</th>
+            <td><%= attribute_present_or_not?(@business.address) %></td>
+          </tr>
+          <tr>
+            <th>Voice:</th>
+            <td><%= attribute_present_or_not?(@business.voice) %></td>
+          </tr>
+          <tr>
+            <th>Fax:</th>
+            <td><%= attribute_present_or_not?(@business.fax) %></td>
+          </tr>
+          <tr>
+            <th>VRN:</th>
+            <td><%= attribute_present_or_not?(@business.vrn) %></td>
+          </tr>
+          <tr>
+            <th>TIN:</th>
+            <td><%= attribute_present_or_not?(@business.tin) %></td>
+          </tr>          
+        </table>      
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+ 
