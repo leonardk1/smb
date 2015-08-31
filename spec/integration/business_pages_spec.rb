@@ -21,7 +21,8 @@ describe 'Business Pages' do
     describe "submitting business details" do
       context "Success" do
         before do
-          fill_in "business[name]",    with: "#{Faker::Internet.email}"
+          @business_name = Faker::Internet.email
+          fill_in "business[name]",    with: "#{@business_name}"
           fill_in "business[location]", with: "#{Faker::Address.street_name}
             #{Faker::Address.street_address}"
           fill_in "business[address]", with: "#{Faker::Address.postcode}"
@@ -33,6 +34,7 @@ describe 'Business Pages' do
         end
 
         it { should have_content("Business, Successfully Added")}
+        it { should have_content("Details for #{@business_name}")}
       end
 
       context "Failure" do

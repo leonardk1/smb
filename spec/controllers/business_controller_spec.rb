@@ -17,10 +17,11 @@ RSpec.describe BusinessController, :type => :controller do
     context "Success" do
       before do
         post :create, business: attributes_for(:business)
+        @business = Business.find_by(name: "Furaha Software Company")
       end
 
       it "redirects to the home path" do
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to business_path(@business.id)
       end
 
       it "generates a success message" do
