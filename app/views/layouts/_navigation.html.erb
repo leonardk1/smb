@@ -57,7 +57,9 @@
         <a href="#"><i class="fa fa-fw fa-file-text-o"></i> Reports</a>
       </li>
       <li>
-        <a href="#"><i class="fa fa-fw fa-th-large"></i> Products</a>
+        <a href="<%= business_products_path(session[:business_id]) %>">
+          <i class="fa fa-fw fa-th-large"></i> Products
+        </a>
       </li>
       <li>
         <a href="#"><i class="fa fa-fw fa-credit-card"></i> Orders</a>
