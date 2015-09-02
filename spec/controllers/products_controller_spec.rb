@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ProductsController, :type => :controller do
   before do   
     @business = create(:business)
-    sign_in create(:contact, business_id: @businessg)
+    sign_in create(:contact, business_id: @business.id)
   end
 
   describe "GET index" do
