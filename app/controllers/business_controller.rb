@@ -11,7 +11,8 @@ class BusinessController < ApplicationController
     respond_to do |format|
       if @business.save
         flash[:success] = "Business, Successfully Added"
-        format.html { redirect_to business_path(@business) }
+        session[:business_id] = @business.id
+        format.html { redirect_to business_path(session[:business_id]) }
       else
         flash[:error] = "Sorry, Unable to Register the Business
           because #{@business.errors.full_messages.to_sentence}"
