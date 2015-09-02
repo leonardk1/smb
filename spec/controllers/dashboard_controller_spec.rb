@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe DashboardController, :type => :controller do
   before do
-    @contact = create(:contact)
+    @request.env["devise.mapping"] = Devise.mappings[:contact]
+    @business = create(:business)
+    @contact = create(:contact, business_id: @business.id)
     sign_in @contact
   end
 
