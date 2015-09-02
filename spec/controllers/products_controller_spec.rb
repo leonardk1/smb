@@ -26,7 +26,8 @@ RSpec.describe ProductsController, :type => :controller do
   	end
     context "Success" do
       before do      	
-        post :create, product: { name: "Laptop", unit_price: 200.0, description: "New Product", business_id: @business.id}, business_id: session[:business_id]
+        post :create, product: { name: "Laptop", unit_price: 200.0,
+        	description: "New Product", business_id: @business.id}, business_id: session[:business_id]
       end
 
       it "redirects to the home path" do
@@ -38,7 +39,8 @@ RSpec.describe ProductsController, :type => :controller do
       end
 
       specify "The new Product Gets Added to the Database" do
-        expect{ post :create, product: attributes_for(:product), business_id: session[:business_id] }.to change(Product,:count).by(1)
+        expect{ post :create, product: attributes_for(:product),
+        	business_id: session[:business_id] }.to change(Product,:count).by(1)
       end
     end
 
@@ -52,11 +54,13 @@ RSpec.describe ProductsController, :type => :controller do
       end
 
       it "generates a failure message" do
-        expect(flash[:error]).to eq("Sorry, Unable to add the new product because\n          Name can't be blank and Unit price can't be blank")
+        expect(flash[:error]).to eq(
+        	"Sorry, Unable to add the new product because\n          Name can't be blank and Unit price can't be blank")
       end
 
       specify "There are no changes to the Product table" do
-        expect{ post :create, product: { name: "", unit_price: " "}, business_id: session[:business_id] }.to change(Product,:count).by(0)
+        expect{ post :create, product: { name: "", unit_price: " "},
+          business_id: session[:business_id] }.to change(Product,:count).by(0)
       end
     end
   end

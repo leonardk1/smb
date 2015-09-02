@@ -36,7 +36,8 @@ describe 'Product Pages' do
           click_button "Add Product"
         end
 
-        it { should have_content("  Sorry, Unable to add the new product because Name can't be blank and Unit price can't be blank")}
+        it { should have_content(
+          "Sorry, Unable to add the new product because Name can't be blank and Unit price can't be blank")}
       end
     end
   end
