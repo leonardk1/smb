@@ -138,6 +138,20 @@ ul.alert-dropdown {
   }  
 }
 
+.general-panel.product-panel{
+  margin-top: 2%;
+  .panel-body{
+    padding: 2px;
+    .table{
+      margin: 0px;
+    }
+  }
+}
+
+#new-product-btn{
+  padding-top: 5px;
+}
+
 .login_btn{
   padding-top: 5px;
 }

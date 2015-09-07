@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div id="new-product-btn">
+        <%= link_to 'Add a New Product',
+          new_business_product_path(session[:business_id]),
+          class: "btn btn-lg btn-primary" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="page-header text-center">Product List</h1>
+      <div class="panel panel-primary general-panel product-panel">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th class="text-center">Name</th>
+                  <th class="text-center">Unit Price</th>
+                  <th class="text-center">Description</th>
+                </tr>                
+              </thead>
+              <tbody>
+                <% @products.each do |product| %>
+                  <tr class="text-center">
+                    <td><%= @products.index(product) + 1 %></td>
+                    <td><%= product.name %></td>
+                    <td><%= product.unit_price %></td>
+                    <td><%= attribute_present_or_not?(product.description) %></td>
+                  </tr>
+                <% end %>                
+              </tbody>              
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>

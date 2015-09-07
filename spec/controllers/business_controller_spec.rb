@@ -18,10 +18,11 @@ RSpec.describe BusinessController, :type => :controller do
       before do
         post :create, business: attributes_for(:business)
         @business = Business.find_by(name: "Furaha Software Company")
+        session[:business_id] = @business.id
       end
 
-      it "redirects to the home path" do
-        expect(response).to redirect_to business_path(@business.id)
+      it "redirects to the business path" do
+        expect(response).to redirect_to business_path(session[:business_id])
       end
 
       it "generates a success message" do
@@ -38,11 +39,11 @@ RSpec.describe BusinessController, :type => :controller do
         post :create, business: { name: ""}
       end
 
-      it "redirects to the home path" do
+      it "re-render to the new template" do
         expect(response).to render_template :new
       end
 
-      it "generates a success message" do
+      it "generates a failure message" do
         expect(flash[:error]).to eq("Sorry, Unable to Register the Business
           because Name can't be blank and Location can't be blank")
       end
