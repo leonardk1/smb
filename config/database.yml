@@ -13,8 +13,8 @@ default: &default
 development:
   <<: *default
   database: smb_development
-  username: rails
-  password: railspass
+  username: portal
+  password: passforportal
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -22,8 +22,8 @@ development:
 test:
   <<: *default
   database: smb_test
-  username: <%= ENV['MAGNUM'].nil? ? 'rails' : 'postgres' %>
-  password: <%= 'railspass' if ENV['MAGNUM'].nil? %>
+  username: portal
+  password: passforportal
 
 production:
   <<: *default
